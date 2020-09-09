@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1,viewport-fit=cover">
+    <style>
+        @import url("https://unpkg.com/element-ui@2.13.2/lib/theme-chalk/index.css");
+        /* https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/theme-chalk/index.css */
+    </style>
+    <title>Search Flow</title>
+</head>
+<body>
+    <div id="app">
+
+        <template>
+            <h3>Search</h3>
+            <el-select v-model="value" placeholder="Tap here to search" filterable :filter-method="filterOptions" clearable>
+                <el-option-group v-for="group in options" :key="group.label" :label="group.label" :value="group.value">
+                    <el-option v-for="item in group.options" :key="item.label" :label="item.label" :value="item.value">
+                    </el-option>
+                </el-option-group>
+            </el-select>
+
+        </template>
+    </div>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/element-ui@2.13.2/lib/index.js"></script>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/index.js"></script> -->
+    <script>
+        const Main = {
+            data() {
+                return {
+                    options: [{
+                        label: 'Vacuum',
+                        value: 'Dyson',
+                        options: [{
+                            value: 'Dyson',
+                            label: '(V11)In-stock'
+                        }, {
+                            value: 'Dyson',
+                            label: '(V10)Out-of-stock'
+                        }, {
+                            value: 'Shenzhen4',
+                            label: 'other4'
+                        }, {
+                            value: 'Shenzhen5',
+                            label: 'other5'
+                        }]
+                    }, {
+                        label: 'Hair Dryer',
+                        value: 'Dyson',
+                        options: [{
+                            value: 'Dyson',
+                            label: '(Supersonic)In-stock'
+                        }, {
+                            value: 'Shenzhen1',
+                            label: 'other1'
+                        }, {
+                            value: 'Shenzhen2',
+                            label: 'other2'
+                        }, {
+                            value: 'Shenzhen3',
+                            label: 'other3'
+                        }]
+                    }, {
+                        label: 'OtherGroups',
+                        value: 'test',
+                        options: [{
+                            value: 'test0',
+                            label: 'test00'
+                        }, {
+                            value: 'test1',
+                            label: 'test11'
+                        }]
+                    }],
+                    optionsClone: [],
+                    value: ''
+                }
+            },
+            created() {
+                this.optionsClone = JSON.parse(JSON.stringify(this.options))
+            },
+            methods: {
+                filterOptions(val) {
+                    if (!val) {
+                        this.options = JSON.parse(JSON.stringify(this.optionsClone))
+                    }
+                    let arr = JSON.stringify(this.options).match(/"value"(|\s):(|\s)"([\w\d_.@#$%^&*()]+)"/g) || []
+                    arr = arr.map(m => m.replace(/"value":"(.+)"/, '$1'))
+                    if(!arr.some(m => m.includes(val))) this.options = []
+                    // console.log(val, arguments, this.options, this)
+                    const recurOption = (opt, upIndex) => {
+                        opt = opt.filter((m, i) => {
+                            if(m.options) {
+                                recurOption(m.options, i)
+                            }
+                            return m.value.includes(val)
+                        })
+                        if(upIndex !== undefined && opt.length && this.options.length && this.options[upIndex]) {
+                            this.options[upIndex].options = opt
+                        }
+                        return opt.length ? opt : this.options
+                    }
+                    this.options = recurOption(this.options)
+                },
+                dataFilter(val) {
+                }
+            }
+        }
+        const SFlow = Vue.extend(Main)
+        new SFlow().$mount('#app')
+    </script>
+</body>
+</html>
