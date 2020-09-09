@@ -1,0 +1,19 @@
+.swiper-wrapper{
+    width: 100%;
+    height: 100%;
+    .swiper-slide{
+        min-height: 100vh;
+        text-align: center;
+        color:#fff;
+        font-weight: bolder;
+        &:nth-child(1) {
+            background: #036;
+        }
+        &:nth-child(2) {
+            background: #fc0;
+        }
+        &:nth-child(3) {
+            background: #600;
+        }
+    }
+}
