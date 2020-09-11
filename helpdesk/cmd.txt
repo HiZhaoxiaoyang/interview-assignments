@@ -1,0 +1,6 @@
+# 读取 .gz 文件但不解压
+zmore filename
+# 或者
+zless filename
+# gizp
+gzip -dc DevOps_interview_data_set.gz | grep 'device' | more > temp.txt

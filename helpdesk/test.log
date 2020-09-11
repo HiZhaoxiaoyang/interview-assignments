@@ -1,0 +1,8 @@
+Feb  3 17:26:36 servername augenrules: failure 1
+Feb  3 17:26:38 servername NetworkManager[830]: <info>  [1580768798.0902] manager: rfkill: WiFi enabled by radio killswitch; enabled by state file"}
+Feb  3 17:26:44 servername Unit metricbeat.service entered failed state
+Feb  3 18:01:44 servername rtprocess[4815]: (RTI rtscantask[6106]@xx)#app#ClsRtdb_query_attr.cpp#931#ClsRtdbAttrTbl::fetchScalarVal(): Failed to fetch scalar value because failed to convert address to number address.
+Feb  3 19:26:36 servername augenrules: failure 1
+Feb  3 19:45:38 servername NetworkManager[830]: <info>  [1580768798.0902] manager: rfkill: WiFi enabled by radio killswitch; enabled by state file
+Feb  3 20:26:44 servername Unit metricbeat.service entered failed state.
+Feb  3 21:01:44 servername rtprocess[4815]: (RTI rtscantask[6106]@xx)#app#ClsRtdb_query_attr.cpp#931#ClsRtdbAttrTbl::fetchScalarVal(): Failed to fetch scalar value because failed to convert address to number address.
