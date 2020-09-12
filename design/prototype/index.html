@@ -6,6 +6,22 @@
     <style>
         @import url("https://unpkg.com/element-ui@2.13.2/lib/theme-chalk/index.css");
         /* https://cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/theme-chalk/index.css */
+        body{ background: #fafafa; }
+        #app{ padding: 0 10px;}
+        #app p.title{
+            font-size: 35px;
+            font-weight: bold;
+            margin: 30px 0 10px 0;
+        }
+        .el-select{
+            width: 100%;
+        }
+        .el-input--suffix .el-input__inner {
+            background: #ededed;
+            border-radius: 10px;
+            border: none;
+        }
+        .el-icon-search:before { color: #999; }
     </style>
     <title>Search Flow</title>
 </head>
@@ -13,8 +29,9 @@
     <div id="app">
 
         <template>
-            <h3>Search</h3>
-            <el-select v-model="value" placeholder="Tap here to search" filterable :filter-method="filterOptions" clearable>
+            <p class="title">Search</p>
+            <el-select prefix-icon="el-icon-search" v-model="value" placeholder="Tap here to search" filterable :filter-method="filterOptions" clearable>
+                <i slot="prefix" class="el-input__icon el-icon-search"></i>
                 <el-option-group v-for="group in options" :key="group.label" :label="group.label" :value="group.value">
                     <el-option v-for="item in group.options" :key="item.label" :label="item.label" :value="item.value">
                     </el-option>

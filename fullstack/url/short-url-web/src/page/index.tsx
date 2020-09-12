@@ -36,24 +36,20 @@ function UrlSearch() {
 
     return (
         <div>
-            <div className="search-header">
-                {'短连接生成系统'}
-            </div>
             <div className="search-body-con">
                 <div className="search-body">
 
+                    <div className="search-header">
+                        {'短连接生成系统'}
+                    </div>
                     {"链接 -> 短连接"}
                     <Search
                         placeholder="链接"
                         onSearch={handlInsertUrl}
-                        defaultValue='https://ant.design/components/input-cn/'
+                        defaultValue='https://www.baidu.com/'
                     />
-                    <br></br>
-                    <br></br>
                     {"短连接 -> 链接"}
                     <Search placeholder="短连接" onSearch={handlFindUrl} />
-                    <br></br>
-                    <br></br>
                     <div className='search-body__result'>{result}</div>
                 </div>
             </div>

@@ -1,9 +1,11 @@
-
+body{
+    background: #fafafa;
+}
 .search-header{
     width: 100%;
     font-size: 3rem;
     font-weight: 600;
-    text-align: center;
+    /* text-align: center; */
     margin-top: 2rem;
 }
 
@@ -13,11 +15,15 @@
 }
 
 .search-body{
-    background-color: #f9f9f9;
+    /* background-color: #f9f9f9; */
     width: 70%;
     min-width: 20rem;
     margin-top: 5rem;
     height: 20rem;
-
     padding: 1rem;
+    line-height: 4rem;
+}
+.ant-input-affix-wrapper{
+    border-radius: 10px;
+    line-height: 2.5rem;
 }
