@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import "./App.scss";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 
 import 'swiper/swiper.scss';
@@ -11,23 +11,17 @@ import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 
 function App() {
-  SwiperCore.use([Navigation, Pagination, Scrollbar, A11y ,Autoplay])
-  const swiperOptions = {
-    preloadImages: true,
-    autoplay: 4000,
-    autoplayDisableOnInteraction: false
-  }
-  console.log(swiperOptions)
+  SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
   return <div className="App">
       {/* write your component here */}
       {/* test */}
       <Swiper
         spaceBetween={500}
         slidesPerView={1}
-        autoplay={true}
-        pagination={{ clickable: true }}
+        // navigation
         // autoHeight={true}
-        // swiperOptions={swiperOptions}
+        autoplay={{delay: 5000}}
+        pagination={{ clickable: true }}
         // scrollbar={{ draggable: true }}
         onInit={
           (swiper) => {
@@ -57,8 +51,7 @@ function App() {
         <SwiperSlide>
           <div>
             <span>Buy a tablet of xPhone for college.
-              <br/>
-              Get arPods
+              <br/>Get arPods
             </span>
             <img src={require('./assets/slide3_p.png')} alt="s1"/>
           </div>
